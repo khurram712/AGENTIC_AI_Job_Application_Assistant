@@ -157,8 +157,8 @@ with st.sidebar:
     st.subheader("⚙️ Configuration")
 
     api_key = st.text_input(
-        "Anthropic API Key",
-        value=os.getenv("ANTHROPIC_API_KEY", ""),
+        "OPENAI API Key",
+        value=os.getenv("OPENAI_API_KEY", ""),
         type="password",
         help="Your Anthropic API key (stored only in this session)",
     )
