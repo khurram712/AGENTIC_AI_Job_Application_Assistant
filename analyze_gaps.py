@@ -16,23 +16,28 @@ from state import AgentState
 
 
 async def _run(state: AgentState) -> AgentState:
-    async with MCPClient() as client:
+    try:
+        async with MCPClient() as client:
         result = await client.call(
             "analyze_skill_gaps",
             resume_text=state["resume_text"],
             job_description=state["job_description"],
         )
 
-    matching = result.get("matching_skills", [])
-    gaps     = result.get("skill_gaps", [])
+        matching = result.get("matching_skills", [])
+        gaps     = result.get("skill_gaps", [])
 
-    return {
+        return {
         **state,
         "matching_skills": matching,
         "skill_gaps":      gaps,
         "current_step":    f"✅ Gap analysis done — {len(gaps)} gap(s) found",
         "error":           None,
-    }
+        }
+    except AttributeError:
+        # counters is not a dictionary, ignore and move on
+        pass
+
 
 
 def analyze_gaps(state: AgentState) -> AgentState:
