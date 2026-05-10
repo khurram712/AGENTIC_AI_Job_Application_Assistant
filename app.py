@@ -21,8 +21,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 load_dotenv()
 
 from graph import stream_agent
-from utils.pdf_parser import extract_text
-from utils.doc_generator import generate_cv_docx, generate_cover_letter_docx
+from pdf_parser import extract_text
+from doc_generator import generate_cv_docx, generate_cover_letter_docx
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Page config
