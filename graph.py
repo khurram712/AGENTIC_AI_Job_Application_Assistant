@@ -32,11 +32,11 @@ from __future__ import annotations
 
 from langgraph.graph import END, START, StateGraph
 
-from nodes.analyze_gaps        import analyze_gaps
-from nodes.generate_cover_letter import generate_cover_letter
-from nodes.parse_documents     import parse_documents
-from nodes.recommend_resources import recommend_resources
-from nodes.rewrite_cv          import rewrite_cv
+from analyze_gaps        import analyze_gaps
+from generate_cover_letter import generate_cover_letter
+from parse_documents     import parse_documents
+from recommend_resources import recommend_resources
+from rewrite_cv          import rewrite_cv
 from state import AgentState
 
 
