@@ -151,7 +151,7 @@ with st.sidebar:
         width=60,
     )
     st.title("Job Application\nAgent")
-    st.caption("Powered by LangGraph + MCP + Claude")
+    st.caption("Powered by LangGraph + MCP + Open AI")
 
     st.divider()
     st.subheader("⚙️ Configuration")
@@ -160,10 +160,10 @@ with st.sidebar:
         "OPENAI API Key",
         value=os.getenv("OPENAI_API_KEY", ""),
         type="password",
-        help="Your Anthropic API key (stored only in this session)",
+        help="Your OPENAI API key (stored only in this session)",
     )
     if api_key:
-        os.environ["ANTHROPIC_API_KEY"] = api_key
+        os.environ["OPENAI_API_KEY"] = api_key
 
     st.divider()
     st.subheader("🏗️ Architecture")
@@ -233,9 +233,9 @@ st.divider()
 
 # ── Action button ─────────────────────────────────────────────────────────────
 
-run_disabled = not (resume_text_raw and job_desc.strip() and os.getenv("ANTHROPIC_API_KEY"))
-if run_disabled and not os.getenv("ANTHROPIC_API_KEY"):
-    st.warning("🔑 Enter your Anthropic API key in the sidebar to enable the agent.")
+run_disabled = not (resume_text_raw and job_desc.strip() and os.getenv("OPENAI_API_KEY"))
+if run_disabled and not os.getenv("OPENAI_API_KEY"):
+    st.warning("🔑 Enter your OPEN AI API key in the sidebar to enable the agent.")
 
 run_btn = st.button(
     "🚀 Run Agent",
